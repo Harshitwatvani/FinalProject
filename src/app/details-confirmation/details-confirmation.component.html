@@ -1,0 +1,69 @@
+<body>
+  <table class="table table-hover table-dark" *ngIf="passengers">
+		<thead>
+            <tr>
+                <tr>
+                    <th scope="col">Flight Name.</th>
+                    <th scope="col">Departure Airport</th>
+                    <th scope="col">Departure Time</th>
+                    <th scope="col">Destination Airport</th>
+                    <th scope="col">Arrival Time</th>
+                    
+                </tr>
+            </thead>
+		<tbody>	
+			<tr>
+              <td>{{passengers[0].FlightId}}</td>
+              <td>{{passengers[0].DeparturePoint}}</td>
+              <td>{{passengers[0].ArrivalPoint}}</td> 
+              <td>{{passengers[0].Departure_Time}}</td> 
+              <td>{{passengers[0].Arrival_Time}}</td>	
+			</tr>
+			
+		</tbody>
+</table>
+<table class="passengers table table-hover table-dark" *ngFor="let passenger of passengers">
+  <thead>
+          <tr>
+              <tr>
+                  <th scope="col">Seat Number</th>
+                  <th scope="col">Passenger Name</th>
+                  <th scope="col">Gender</th>
+                  <th scope="col">Age</th>
+              </tr>
+          </thead>
+  <tbody>	
+    <tr>
+            <td>{{passenger.SeatID}}</td>
+            <td>{{passenger.PName}}</td>
+            <td>{{passenger.Gender}}</td> 
+            <td>{{passenger.Age}}</td> 	
+    </tr>
+    
+  </tbody>
+</table>
+<button style="margin: 10px;" (click)="proceed()" class="btn btn-primary">Confirm</button>
+  <!-- <button class="btn btn-info">Edit</button> -->
+
+</body>
+
+
+  <!-- <div class="maindiv">
+  <h3>Your Details</h3>
+    <div  class="flight" *ngIf="passengers">
+      <b>Flight Name:</b> {{passengers[0].FlightId}}<br/>
+      <b>Departure Airport:</b>{{passengers[0].DeparturePoint}}<br/>
+      <b>Destination Airport:</b>{{passengers[0].ArrivalPoint}} <br/>
+      <b>Departure time:</b> {{passengers[0].Departure_Time}}<br/>
+      <b>Arrival Time:</b>{{passengers[0].Arrival_Time}}<br/>
+  </div> -->
+  <!-- <hr style="border: solid;">
+  <div class="passengers" *ngFor="let passenger of passengers">
+    <b>Seat Number:</b>  {{passenger.SeatID}}<br/>  
+    <b> Passenger Name:</b> {{passenger.PName}}<br/>
+    <b>Gender:</b> {{passenger.Gender}}<br/>
+    <b>Age:</b>{{passenger.Age}}
+          
+  </div> -->
+
+  

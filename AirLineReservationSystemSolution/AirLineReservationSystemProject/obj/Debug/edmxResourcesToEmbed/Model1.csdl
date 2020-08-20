@@ -1,0 +1,766 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirlineReservationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbl_AircraftDetails">
+    <Key>
+      <PropertyRef Name="Airplane_no" />
+    </Key>
+    <Property Name="Airplane_no" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="CabinType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Column_no" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblSeats" Relationship="Self.FK__tblSeats__Airpla__30F848ED" FromRole="tbl_AircraftDetails" ToRole="tblSeats" />
+    <NavigationProperty Name="tblTrips" Relationship="Self.FK__tblTrips__Airpla__300424B4" FromRole="tbl_AircraftDetails" ToRole="tblTrips" />
+  </EntityType>
+  <EntityType Name="tbl_Airports">
+    <Key>
+      <PropertyRef Name="IATA_code" />
+    </Key>
+    <Property Name="IATA_code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ICAO_code" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="airport_name" Type="String" MaxLength="49" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="city_name" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_FlightDetails">
+    <Key>
+      <PropertyRef Name="FlightId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prefix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FlightId" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="TravelDays" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DeparturePoint" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ArrivalPoint" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CabinType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="EconomyClassFair" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessClassFair" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FirstClassFair" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FlightStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblTrips" Relationship="Self.FK__tblTrips__Flight__2F10007B" FromRole="tbl_FlightDetails" ToRole="tblTrips" />
+  </EntityType>
+  <EntityType Name="tblAdmin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PreFix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AdminID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Passwords" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblBooking">
+    <Key>
+      <PropertyRef Name="BID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prefix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Booking_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Booking_Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK__tblBookin__UserI__31EC6D26" FromRole="tblBookings" ToRole="tblUser" />
+    <NavigationProperty Name="tblTicket_table" Relationship="Self.FK__tblTicket_t__BID__2D27B809" FromRole="tblBookings" ToRole="tblTicket_table" />
+    <NavigationProperty Name="tblTicket_table1" Relationship="Self.FK__tblTicket_t__BID__33D4B598" FromRole="tblBookings" ToRole="tblTicket_table" />
+    <NavigationProperty Name="tblPayments" Relationship="Self.pk_Bid" FromRole="tblBookings" ToRole="tblPayments" />
+  </EntityType>
+  <EntityType Name="tblpassenger_table">
+    <Key>
+      <PropertyRef Name="PassengerID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prefix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PassengerID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="TicketID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SeatID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblTicket_table" Relationship="Self.FK__tblpassen__Ticke__2E1BDC42" FromRole="tblpassenger_table" ToRole="tblTicket_table" />
+    <Property Name="Age" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblPayment">
+    <Key>
+      <PropertyRef Name="Payment_ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prefix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Payment_ID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Payment_Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Payment_Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Payment_date" Type="DateTime" Precision="3" />
+    <Property Name="Bid" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblBooking" Relationship="Self.pk_Bid" FromRole="tblPayments" ToRole="tblBookings" />
+  </EntityType>
+  <EntityType Name="tblSeat">
+    <Key>
+      <PropertyRef Name="SeatID" />
+      <PropertyRef Name="Airplane_No" />
+    </Key>
+    <Property Name="SeatID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Airplane_No" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SeatType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbl_AircraftDetails" Relationship="Self.FK__tblSeats__Airpla__30F848ED" FromRole="tblSeats" ToRole="tbl_AircraftDetails" />
+  </EntityType>
+  <EntityType Name="tblTicket_table">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prefix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TicketID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="BID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TripID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblBooking" Relationship="Self.FK__tblTicket_t__BID__2D27B809" FromRole="tblTicket_table" ToRole="tblBookings" />
+    <NavigationProperty Name="tblBooking1" Relationship="Self.FK__tblTicket_t__BID__33D4B598" FromRole="tblTicket_table" ToRole="tblBookings" />
+    <NavigationProperty Name="tblpassenger_table" Relationship="Self.FK__tblpassen__Ticke__2E1BDC42" FromRole="tblTicket_table" ToRole="tblpassenger_table" />
+    <NavigationProperty Name="tblTrip" Relationship="Self.FK__tblTicket__TripI__32E0915F" FromRole="tblTicket_table" ToRole="tblTrips" />
+    <Property Name="TicketStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblTrip">
+    <Key>
+      <PropertyRef Name="TripID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prefix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TripID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="FlightID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Airplane_No" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TripDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Departure_Time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Arrival_Time" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="tbl_AircraftDetails" Relationship="Self.FK__tblTrips__Airpla__300424B4" FromRole="tblTrips" ToRole="tbl_AircraftDetails" />
+    <NavigationProperty Name="tbl_FlightDetails" Relationship="Self.FK__tblTrips__Flight__2F10007B" FromRole="tblTrips" ToRole="tbl_FlightDetails" />
+    <NavigationProperty Name="tblTicket_table" Relationship="Self.FK__tblTicket__TripI__32E0915F" FromRole="tblTrips" ToRole="tblTicket_table" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PreFix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PhoneNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblBookings" Relationship="Self.FK__tblBookin__UserI__31EC6D26" FromRole="tblUser" ToRole="tblBookings" />
+    <Property Name="Security" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__tblSeats__Airpla__30F848ED">
+    <End Role="tbl_AircraftDetails" Type="Self.tbl_AircraftDetails" Multiplicity="1" />
+    <End Role="tblSeats" Type="Self.tblSeat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_AircraftDetails">
+        <PropertyRef Name="Airplane_no" />
+      </Principal>
+      <Dependent Role="tblSeats">
+        <PropertyRef Name="Airplane_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTrips__Airpla__300424B4">
+    <End Role="tbl_AircraftDetails" Type="Self.tbl_AircraftDetails" Multiplicity="1" />
+    <End Role="tblTrips" Type="Self.tblTrip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_AircraftDetails">
+        <PropertyRef Name="Airplane_no" />
+      </Principal>
+      <Dependent Role="tblTrips">
+        <PropertyRef Name="Airplane_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTrips__Flight__2F10007B">
+    <End Role="tbl_FlightDetails" Type="Self.tbl_FlightDetails" Multiplicity="1" />
+    <End Role="tblTrips" Type="Self.tblTrip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_FlightDetails">
+        <PropertyRef Name="FlightId" />
+      </Principal>
+      <Dependent Role="tblTrips">
+        <PropertyRef Name="FlightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblBookin__UserI__31EC6D26">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+    <End Role="tblBookings" Type="Self.tblBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblBookings">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTicket_t__BID__2D27B809">
+    <End Role="tblBookings" Type="Self.tblBooking" Multiplicity="1" />
+    <End Role="tblTicket_table" Type="Self.tblTicket_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBookings">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="tblTicket_table">
+        <PropertyRef Name="BID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTicket_t__BID__33D4B598">
+    <End Role="tblBookings" Type="Self.tblBooking" Multiplicity="1" />
+    <End Role="tblTicket_table" Type="Self.tblTicket_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBookings">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="tblTicket_table">
+        <PropertyRef Name="BID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_Bid">
+    <End Role="tblBookings" Type="Self.tblBooking" Multiplicity="0..1" />
+    <End Role="tblPayments" Type="Self.tblPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBookings">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="tblPayments">
+        <PropertyRef Name="Bid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblpassen__Ticke__2E1BDC42">
+    <End Role="tblTicket_table" Type="Self.tblTicket_table" Multiplicity="1" />
+    <End Role="tblpassenger_table" Type="Self.tblpassenger_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket_table">
+        <PropertyRef Name="TicketID" />
+      </Principal>
+      <Dependent Role="tblpassenger_table">
+        <PropertyRef Name="TicketID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTicket__TripI__32E0915F">
+    <End Role="tblTrips" Type="Self.tblTrip" Multiplicity="1" />
+    <End Role="tblTicket_table" Type="Self.tblTicket_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTrips">
+        <PropertyRef Name="TripID" />
+      </Principal>
+      <Dependent Role="tblTicket_table">
+        <PropertyRef Name="TripID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AirlineReservationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="tbl_AircraftDetails" EntityType="Self.tbl_AircraftDetails" />
+    <EntitySet Name="tbl_Airports" EntityType="Self.tbl_Airports" />
+    <EntitySet Name="tbl_FlightDetails" EntityType="Self.tbl_FlightDetails" />
+    <EntitySet Name="tblAdmins" EntityType="Self.tblAdmin" />
+    <EntitySet Name="tblBookings" EntityType="Self.tblBooking" />
+    <EntitySet Name="tblpassenger_table" EntityType="Self.tblpassenger_table" />
+    <EntitySet Name="tblPayments" EntityType="Self.tblPayment" />
+    <EntitySet Name="tblSeats" EntityType="Self.tblSeat" />
+    <EntitySet Name="tblTicket_table" EntityType="Self.tblTicket_table" />
+    <EntitySet Name="tblTrips" EntityType="Self.tblTrip" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+    <AssociationSet Name="FK__tblSeats__Airpla__30F848ED" Association="Self.FK__tblSeats__Airpla__30F848ED">
+      <End Role="tbl_AircraftDetails" EntitySet="tbl_AircraftDetails" />
+      <End Role="tblSeats" EntitySet="tblSeats" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTrips__Airpla__300424B4" Association="Self.FK__tblTrips__Airpla__300424B4">
+      <End Role="tbl_AircraftDetails" EntitySet="tbl_AircraftDetails" />
+      <End Role="tblTrips" EntitySet="tblTrips" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTrips__Flight__2F10007B" Association="Self.FK__tblTrips__Flight__2F10007B">
+      <End Role="tbl_FlightDetails" EntitySet="tbl_FlightDetails" />
+      <End Role="tblTrips" EntitySet="tblTrips" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblBookin__UserI__31EC6D26" Association="Self.FK__tblBookin__UserI__31EC6D26">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblBookings" EntitySet="tblBookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTicket_t__BID__2D27B809" Association="Self.FK__tblTicket_t__BID__2D27B809">
+      <End Role="tblBookings" EntitySet="tblBookings" />
+      <End Role="tblTicket_table" EntitySet="tblTicket_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTicket_t__BID__33D4B598" Association="Self.FK__tblTicket_t__BID__33D4B598">
+      <End Role="tblBookings" EntitySet="tblBookings" />
+      <End Role="tblTicket_table" EntitySet="tblTicket_table" />
+    </AssociationSet>
+    <AssociationSet Name="pk_Bid" Association="Self.pk_Bid">
+      <End Role="tblBookings" EntitySet="tblBookings" />
+      <End Role="tblPayments" EntitySet="tblPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblpassen__Ticke__2E1BDC42" Association="Self.FK__tblpassen__Ticke__2E1BDC42">
+      <End Role="tblTicket_table" EntitySet="tblTicket_table" />
+      <End Role="tblpassenger_table" EntitySet="tblpassenger_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTicket__TripI__32E0915F" Association="Self.FK__tblTicket__TripI__32E0915F">
+      <End Role="tblTrips" EntitySet="tblTrips" />
+      <End Role="tblTicket_table" EntitySet="tblTicket_table" />
+    </AssociationSet>
+    <FunctionImport Name="proc_DetailsConfirmation" ReturnType="Collection(AirlineReservationModel.proc_DetailsConfirmation_Result)">
+      <Parameter Name="mBID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_UserRegisteration">
+      <Parameter Name="t" Mode="In" Type="String" />
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="l" Mode="In" Type="String" />
+      <Parameter Name="dob" Mode="In" Type="DateTime" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_UserLogin" ReturnType="Collection(AirlineReservationModel.proc_UserLogin_Result)" />
+    <FunctionImport Name="proc_AdminLogin" ReturnType="Collection(AirlineReservationModel.proc_AdminLogin_Result)" />
+    <FunctionImport Name="proc_AddFlight">
+      <Parameter Name="td" Mode="In" Type="String" />
+      <Parameter Name="dp" Mode="In" Type="String" />
+      <Parameter Name="ap" Mode="In" Type="String" />
+      <Parameter Name="cabin" Mode="In" Type="String" />
+      <Parameter Name="ef" Mode="In" Type="String" />
+      <Parameter Name="bf" Mode="In" Type="String" />
+      <Parameter Name="ff" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_EditFlight">
+      <Parameter Name="fid" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_ShowFlight" ReturnType="Collection(AirlineReservationModel.proc_ShowFlight_Result)" />
+    <FunctionImport Name="proc_displaypassengers" ReturnType="Collection(AirlineReservationModel.proc_displaypassengers_Result)">
+      <Parameter Name="uid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_insertpassengers">
+      <Parameter Name="TicketID" Mode="In" Type="String" />
+      <Parameter Name="Pname" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="SeatID" Mode="In" Type="String" />
+      <Parameter Name="Age" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_DetailsConfirmation1" ReturnType="Collection(AirlineReservationModel.proc_DetailsConfirmation1_Result)">
+      <Parameter Name="mBID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_UserDetails" ReturnType="Collection(AirlineReservationModel.proc_UserDetails_Result)" />
+    <FunctionImport Name="proc_UserRegisteration1">
+      <Parameter Name="t" Mode="In" Type="String" />
+      <Parameter Name="f" Mode="In" Type="String" />
+      <Parameter Name="l" Mode="In" Type="String" />
+      <Parameter Name="dob" Mode="In" Type="DateTime" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+      <Parameter Name="sec" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_UserDetails1" ReturnType="Collection(AirlineReservationModel.proc_UserDetails1_Result)" />
+    <FunctionImport Name="proc_getUserByEmail" ReturnType="Collection(AirlineReservationModel.proc_getUserByEmail_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="sec" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_updateUser">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="sec" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_updateUser1">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_updateUser2">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Booking">
+      <Parameter Name="userID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_FlightSelect" ReturnType="Collection(AirlineReservationModel.proc_FlightSelect_Result)">
+      <Parameter Name="from" Mode="In" Type="String" />
+      <Parameter Name="to" Mode="In" Type="String" />
+      <Parameter Name="deptdate" Mode="In" Type="DateTime" />
+      <Parameter Name="returndate" Mode="In" Type="DateTime" />
+      <Parameter Name="PassengerCount" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_GetBookings" ReturnType="Collection(AirlineReservationModel.proc_GetBookings_Result)">
+      <Parameter Name="userID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_TicketBook">
+      <Parameter Name="BID" Mode="In" Type="String" />
+      <Parameter Name="TripID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="addTrip">
+      <Parameter Name="FlightID" Mode="In" Type="String" />
+      <Parameter Name="Airplane_No" Mode="In" Type="String" />
+      <Parameter Name="TripDate" Mode="In" Type="DateTime" />
+      <Parameter Name="DepTime" Mode="In" Type="Time" />
+      <Parameter Name="Arrival_Time" Mode="In" Type="Time" />
+    </FunctionImport>
+    <FunctionImport Name="allTrips" ReturnType="Collection(String)" />
+    <FunctionImport Name="createTrip">
+      <Parameter Name="TripID" Mode="In" Type="String" />
+      <Parameter Name="Airplane_No" Mode="In" Type="String" />
+      <Parameter Name="DeptTime" Mode="In" Type="Time" />
+      <Parameter Name="ArrivalTime" Mode="In" Type="Time" />
+    </FunctionImport>
+    <FunctionImport Name="flightDetails" ReturnType="Collection(AirlineReservationModel.flightDetails_Result)" />
+    <FunctionImport Name="locations" ReturnType="Collection(String)" />
+    <FunctionImport Name="passengerInfo" ReturnType="Collection(String)" />
+    <FunctionImport Name="planeInfo" ReturnType="Collection(AirlineReservationModel.planeInfo_Result)">
+      <Parameter Name="planeID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="planes" ReturnType="Collection(String)" />
+    <FunctionImport Name="planeSeatInfo" ReturnType="Collection(String)">
+      <Parameter Name="tripId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="planeSeats" ReturnType="Collection(AirlineReservationModel.planeSeats_Result)">
+      <Parameter Name="Plane_no" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SeatPrice" ReturnType="Collection(AirlineReservationModel.SeatPrice_Result)">
+      <Parameter Name="TripID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="time" ReturnType="Collection(AirlineReservationModel.time_Result)">
+      <Parameter Name="Flight" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="TripByID" ReturnType="Collection(AirlineReservationModel.TripByID_Result)">
+      <Parameter Name="TripID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="alterTrip">
+      <Parameter Name="TripID" Mode="In" Type="String" />
+      <Parameter Name="Airplane_No" Mode="In" Type="String" />
+      <Parameter Name="DeptTime" Mode="In" Type="Time" />
+      <Parameter Name="ArrivalTime" Mode="In" Type="Time" />
+    </FunctionImport>
+    <FunctionImport Name="sp_cancelSeat">
+      <Parameter Name="tid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_cancelTicket" ReturnType="Collection(AirlineReservationModel.sp_cancelTicket_Result)">
+      <Parameter Name="uid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_cancelticketStatus">
+      <Parameter Name="tid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_downloadticket" ReturnType="Collection(AirlineReservationModel.sp_downloadticket_Result)">
+      <Parameter Name="bid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_viewBooking" ReturnType="Collection(AirlineReservationModel.sp_viewBooking_Result)">
+      <Parameter Name="uid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_getTicket" ReturnType="Collection(AirlineReservationModel.proc_getTicket_Result)">
+      <Parameter Name="bid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_getUserIDbyEmail" ReturnType="Collection(String)">
+      <Parameter Name="email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_FlightSelect1" ReturnType="Collection(AirlineReservationModel.proc_FlightSelect1_Result)">
+      <Parameter Name="from" Mode="In" Type="String" />
+      <Parameter Name="to" Mode="In" Type="String" />
+      <Parameter Name="deptdate" Mode="In" Type="DateTime" />
+      <Parameter Name="returndate" Mode="In" Type="DateTime" />
+      <Parameter Name="PassengerCount" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_payment">
+      <Parameter Name="amount" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="bid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_getpayment" ReturnType="Collection(AirlineReservationModel.proc_getpayment_Result)" />
+    <FunctionImport Name="addTripsDetails" ReturnType="Collection(AirlineReservationModel.addTripsDetails_Result)" />
+    <FunctionImport Name="sp_cancelTicket1" ReturnType="Collection(AirlineReservationModel.sp_cancelTicket1_Result)">
+      <Parameter Name="uid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="passengers" ReturnType="Collection(String)">
+      <Parameter Name="id" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_FlightSelect2" ReturnType="Collection(AirlineReservationModel.proc_FlightSelect2_Result)">
+      <Parameter Name="from" Mode="In" Type="String" />
+      <Parameter Name="to" Mode="In" Type="String" />
+      <Parameter Name="deptdate" Mode="In" Type="DateTime" />
+      <Parameter Name="returndate" Mode="In" Type="DateTime" />
+      <Parameter Name="PassengerCount" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SearchFlight" ReturnType="Collection(AirlineReservationModel.SearchFlight_Result)">
+      <Parameter Name="from" Mode="In" Type="String" />
+      <Parameter Name="to" Mode="In" Type="String" />
+      <Parameter Name="deptdate" Mode="In" Type="DateTime" />
+      <Parameter Name="returndate" Mode="In" Type="DateTime" />
+      <Parameter Name="Pass" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SearchFlight1" ReturnType="Collection(AirlineReservationModel.SearchFlight1_Result)">
+      <Parameter Name="from" Mode="In" Type="String" />
+      <Parameter Name="to" Mode="In" Type="String" />
+      <Parameter Name="deptdate" Mode="In" Type="DateTime" />
+      <Parameter Name="returndate" Mode="In" Type="DateTime" />
+      <Parameter Name="Pass" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SearchFlight2" ReturnType="Collection(AirlineReservationModel.SearchFlight2_Result)">
+      <Parameter Name="from" Mode="In" Type="String" />
+      <Parameter Name="to" Mode="In" Type="String" />
+      <Parameter Name="deptdate" Mode="In" Type="DateTime" />
+      <Parameter Name="returndate" Mode="In" Type="DateTime" />
+      <Parameter Name="Pass" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="proc_DetailsConfirmation_Result">
+    <Property Type="String" Name="FlightId" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DeparturePoint" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ArrivalPoint" Nullable="false" MaxLength="50" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+    <Property Type="String" Name="SeatID" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="PName" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="5" />
+  </ComplexType>
+  <ComplexType Name="proc_UserLogin_Result">
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="proc_AdminLogin_Result">
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Passwords" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="AdminID" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="proc_ShowFlight_Result">
+    <Property Type="String" Name="FlightId" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="TravelDays" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="DeparturePoint" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ArrivalPoint" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CabinType" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="EconomyClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BusinessClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FirstClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FlightStatus" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="proc_displaypassengers_Result">
+    <Property Type="String" Name="Pname" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="proc_DetailsConfirmation1_Result">
+    <Property Type="String" Name="FlightId" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DeparturePoint" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ArrivalPoint" Nullable="false" MaxLength="50" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+    <Property Type="String" Name="SeatID" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="PName" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="proc_UserDetails_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="PreFix" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UserID" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="DOB" Nullable="false" />
+    <Property Type="String" Name="PhoneNo" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="proc_UserDetails1_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="PreFix" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="UserID" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="DOB" Nullable="false" />
+    <Property Type="String" Name="PhoneNo" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Security" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="proc_getUserByEmail_Result">
+    <Property Type="String" Name="UserID" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Security" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="proc_FlightSelect_Result">
+    <Property Type="String" Name="Airplane_no" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="TripID" Nullable="true" MaxLength="40" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+    <Property Type="String" Name="EconomyClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BusinessClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FirstClassFair" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="proc_GetBookings_Result">
+    <Property Type="String" Name="UserID" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="BID" Nullable="true" MaxLength="40" />
+    <Property Type="DateTime" Name="Booking_Date" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Booking_Status" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="flightDetails_Result">
+    <Property Type="String" Name="FlightID" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DeparturePoint" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ArrivalPoint" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="planeInfo_Result">
+    <Property Type="String" Name="Airplane_no" Nullable="false" MaxLength="40" />
+    <Property Type="Int32" Name="Capacity" Nullable="false" />
+    <Property Type="Int32" Name="Column_no" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="planeSeats_Result">
+    <Property Type="String" Name="SeatID" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="SeatType" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="SeatPrice_Result">
+    <Property Type="String" Name="BusinessClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="EconomyClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FirstClassFair" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="time_Result">
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="TripByID_Result">
+    <Property Type="String" Name="TripID" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="FlightID" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="Airplane_No" Nullable="false" MaxLength="40" />
+    <Property Type="DateTime" Name="TripDate" Nullable="false" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_cancelTicket_Result">
+    <Property Type="String" Name="BID" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="TicketID" Nullable="true" MaxLength="40" />
+    <Property Type="DateTime" Name="Booking_Date" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="TripDate" Nullable="false" />
+    <Property Type="String" Name="Airplane_No" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="DeparturePoint" Nullable="false" MaxLength="50" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="String" Name="ArrivalPoint" Nullable="false" MaxLength="50" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+    <Property Type="String" Name="PaymentAmount" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TicketStatus" Nullable="true" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="sp_downloadticket_Result">
+    <Property Type="String" Name="BID" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="BookingStatus" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="Booking_Date" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="TripDate" Nullable="false" />
+    <Property Type="String" Name="Airplane_No" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="DeparturePoint" Nullable="false" MaxLength="50" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="String" Name="ArrivalPoint" Nullable="false" MaxLength="50" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+    <Property Type="String" Name="PaymentAmount" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PaymentStatus" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="PName" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_viewBooking_Result">
+    <Property Type="String" Name="BID" Nullable="true" MaxLength="40" />
+    <Property Type="DateTime" Name="Booking_Date" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="TripDate" Nullable="false" />
+    <Property Type="String" Name="Airplane_No" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="DeparturePoint" Nullable="false" MaxLength="50" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="String" Name="ArrivalPoint" Nullable="false" MaxLength="50" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+    <Property Type="String" Name="PaymentAmount" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PName" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="proc_getTicket_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Prefix" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="TicketID" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="BID" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="TripID" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="TicketStatus" Nullable="true" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="proc_FlightSelect1_Result">
+    <Property Type="String" Name="Airplane_no" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="TripID" Nullable="true" MaxLength="40" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+    <Property Type="String" Name="EconomyClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BusinessClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FirstClassFair" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="proc_getpayment_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="prefix" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Payment_ID" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="Payment_Amount" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Payment_Status" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="Payment_date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Bid" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="addTripsDetails_Result">
+    <Property Type="String" Name="FlightId" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DeparturePoint" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ArrivalPoint" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TravelDays" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="sp_cancelTicket1_Result">
+    <Property Type="String" Name="BID" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="TicketID" Nullable="true" MaxLength="40" />
+    <Property Type="DateTime" Name="Booking_Date" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="TripDate" Nullable="false" />
+    <Property Type="String" Name="Airplane_No" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="DeparturePoint" Nullable="false" MaxLength="50" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="String" Name="ArrivalPoint" Nullable="false" MaxLength="50" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+    <Property Type="String" Name="PaymentAmount" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TicketStatus" Nullable="true" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="proc_FlightSelect2_Result">
+    <Property Type="String" Name="Airplane_no" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="TripID" Nullable="true" MaxLength="40" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+    <Property Type="String" Name="EconomyClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BusinessClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FirstClassFair" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SearchFlight_Result">
+    <Property Type="String" Name="Airplane_no" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="TripID" Nullable="true" MaxLength="40" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+    <Property Type="String" Name="EconomyClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BusinessClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FirstClassFair" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SearchFlight1_Result">
+    <Property Type="String" Name="Airplane_no" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="TripID" Nullable="true" MaxLength="40" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+    <Property Type="String" Name="EconomyClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BusinessClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FirstClassFair" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SearchFlight2_Result">
+    <Property Type="String" Name="Airplane_no" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="TripID" Nullable="true" MaxLength="40" />
+    <Property Type="Time" Name="Departure_Time" Nullable="false" />
+    <Property Type="Time" Name="Arrival_Time" Nullable="false" />
+    <Property Type="String" Name="EconomyClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BusinessClassFair" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="FirstClassFair" Nullable="true" MaxLength="10" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,38 @@
+<h3>Flight Details</h3>
+<table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Flight ID</th>
+        <th scope="col">From</th>
+        <th scope="col">To</th>
+        <th scope="col">Travel Days</th>
+        <th scope="col">Cabin Type</th>
+        <th scope="col">Economy Class Fair</th>
+        <th scope="col">Business Class Fair</th>
+        <th scope="col">First Class Fair</th>
+        <th scope="col">Status</th>
+        <th scope="col">Change Status</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flight of flights">
+        <th scope="row">{{flight.FlightId}}</th>
+        <td>{{flight.DeparturePoint}}</td>
+        <td>{{flight.ArrivalPoint}}</td>
+        <td>{{flight.TravelDays}}</td>     
+        <td>{{flight.CabinType}}</td>
+        <td>{{flight.EconomyClassFair}}</td>
+        <td>{{flight.BusinessClassFair}}</td>      
+        <td>{{flight.FirstClassFair}}</td>
+        <td>{{flight.FlightStatus}}</td>
+        <button *ngIf="flight.FlightStatus=='InActive'" style="margin-left: 35px; margin-top: 35; padding: 5px;"
+        type="button" class="btn btn-primary" (click)="status(flight)"><i class="far fa-eye">Enable</i></button>
+            <button *ngIf="flight.FlightStatus=='Active'" style="margin-left: 35px; margin-top: 35; padding: 5px;"
+             type="button" class="btn btn-primary" (click)="status(flight)"><i class="far fa-eye">Disable</i></button>
+            
+      
+        
+      </tr>
+    </tbody>
+  </table>

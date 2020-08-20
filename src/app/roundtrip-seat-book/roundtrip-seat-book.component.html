@@ -1,0 +1,33 @@
+<div class="maindiv" *ngIf="(info.Seats | json) !== '{}' && (info1.Seats | json) !== '{}' && available">
+    <p><b>Select your seats!!</b></p>
+    <table>
+        <tr *ngFor="let row of rows">
+            <td *ngFor="let column of columns">
+                <button [class] = "seatObject[row + column].type" [ngClass]= "{'Y': seatObject[row + column].clicked, 'X' : seatObject[row + column].clicked}" (click)="handleSeatClick(seatObject[row + column], row + column)"  [disabled] = "seatObject[row + column].booked" >{{row + column}}</button>
+            </td>
+        </tr>
+    </table>
+    <div class="click">  
+    <b>SeatCount :</b>  {{count - seatCount}} <br>
+    </div>
+
+    <table>
+        <tr *ngFor="let row of rows1">
+            <td *ngFor="let column of columns1">
+                <button [class] = "seatObject1[row + column].type" [ngClass]= "{'Y': seatObject1[row + column].clicked, 'X' : seatObject1[row + column].clicked}" (click)="handleSeatClick1(seatObject1[row + column], row + column)"  [disabled] = "seatObject1[row + column].booked" >{{row + column}}</button>
+            </td>
+        </tr>
+    </table>
+    <div class="click">  
+    <b>SeatCount :</b>  {{count1 - seatCount1}} <br>
+    </div>
+
+    
+
+    <div class="click">
+        <p>
+            <b>Overall Fare</b> : Rs.{{overallFare}}
+        </p>
+        <button class="btn btn-success" [disabled] = "((count - seatCount) !== 0 || (count1 - seatCount1) !== 0)" (click)="onContinue()">Continue</button>
+    </div>
+</div>

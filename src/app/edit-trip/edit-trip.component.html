@@ -1,0 +1,41 @@
+<div class="mainDiv">
+    <div class="childDiv">
+        <span>Trip ID</span>
+        <select class="form-control" #allTrip (change)="getTripDetail(allTrip.value)">
+            <option></option>
+            <option *ngFor="let item of trips" [value]="item">{{item}}</option>
+        </select>
+    </div>
+    <div *ngIf="(detailsByID | json) !== '{}'">
+        <div class="childDiv">
+        <span>Flight ID</span>
+        <input class="form-control" #flight disabled [value]="detailsByID.FlightID"/>
+    </div>
+    <div class="childDiv">
+        <span>Airplane No. </span>
+        <select class="form-control" #pl (change) = "insertPlane(pl.value)">
+            <option></option>
+            <option *ngFor="let plane of planes" [value]="plane">{{plane}}</option>
+        </select>
+        <span class="alert alert-danger" *ngIf="p"> This cannot be empty</span>
+    </div>
+        <div class="childDiv">
+            <span>Trip Date</span>
+            <input type= "date" class="form-control" #trip (change) = "addTripDate(trip.value)" disabled [value]="detailsByID.TripDate.split('T')[0]"> 
+        </div>
+        
+        <div class="childDiv">
+            <span>Departure Time </span>
+            <input type="time" id="exampleInput" #dept (change)="addDept(dept.value)" placeholder="HH:mm:ss" required [value]="detailsByID.Arrival_Time"/>
+        </div>
+        <span class="alert alert-danger" *ngIf="dt"> This cannot be empty</span>
+        <div class="childDiv">
+            <span>Arrival Time</span>
+            <input type="time" id="exampleInput" #arrival (change)="addArrivalTime(arrival.value)" placeholder="HH:mm:ss" required [value]="detailsByID.Departure_Time"/>
+        </div>
+        <span class="alert alert-danger" *ngIf="at"> This cannot be empty</span>
+        <button class="btn btn-primary buttonWidth" (click) = "show()">
+            Edit Trip
+        </button>
+    </div>
+</div>

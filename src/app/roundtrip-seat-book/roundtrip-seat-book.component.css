@@ -1,0 +1,30 @@
+button{
+    min-width: 6vw;
+}
+
+.X{
+
+}
+.maindiv, table{
+    margin: 20%;
+    display: block;
+}
+.click{
+    margin-left: 45%;
+    display: block;
+}
+.B{
+    background-color: darkkhaki;
+}
+
+.E{
+    background-color: darkseagreen;
+}
+
+.F{
+    background-color: darkslategray;
+}
+
+.Y{
+    background-color: darkgreen;
+}

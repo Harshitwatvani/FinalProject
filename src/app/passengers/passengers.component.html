@@ -1,0 +1,97 @@
+<body>
+  <section class="aneesha">
+<p><b>Traveller Details</b></p>
+<div class="insertform">
+  <div>{{passenger.PName}}
+ <div *ngIf="s">
+
+  
+  <div class="form-group">
+    <label>Ticket : {{ticket}}</label><br>
+    <label> Seat : {{seat}}  </label><br>
+  <label for="PassengerName">Name</label>
+  <input type="text" class="form-control" [(ngModel)]="name"  id="PasengerName" placeholder="Enter Full Name">
+  <span  class="alert alert-danger" *ngIf="n">Enter name </span>
+</div>    
+<div class="form-group">
+    <label for="PassengerAge">Age</label>
+    <input type="number" class="form-control" [(ngModel)]="age" id="PassengerAge" placeholder="Enter Age">
+    <span  class="alert alert-danger" *ngIf="a">Enter age </span>
+  </div>
+
+    
+      <label for="PassengerGender">Gender</label><br/>
+      <div class="form-check" >
+        <div>
+          <input class="form-check-input" type="radio" id="seat" name="gender" [(ngModel)]="gender" value="male">
+          <label class="form-check-label" for="male" style="padding: 5px;">Male</label>
+        </div> 
+        <div>
+          <input class="form-check-input" type="radio" id=" seat" name="gender" [(ngModel)]="gender" value="female">
+          <label class="form-check-label" for="female">Female</label>
+        </div> 
+        <div>
+          <input class="form-check-input" type="radio" id=" seat" name="gender" [(ngModel)]="gender" value="other">
+          <label class="form-check-label" for="other">Other</label>
+        </div> 
+                 
+      </div>
+      <span  class="alert alert-danger" *ngIf="g">Enter gender </span>
+    </div>
+  </div>
+  
+</div>
+      <!-- <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Date of Birth</label>
+        <div class="col-10">
+          <input class="form-control" type="date"  id="example-date-input">
+        </div>
+      </div> -->
+  <!-- </form> -->
+  <div *ngIf="s"style="margin:auto">
+    <button class="btn btn-primary" (click)="fetchPassengers()">Show previous Passengers</button>
+  </div>
+<div *ngIf="s" class="table-responsive">
+    <table class="table" >
+        <thead  class="thead-dark">
+            <tr >
+                <th>#</th>
+                <th>Passenger Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <!-- <th>SeatId</th> -->
+            </tr>
+        </thead>
+            <tbody>
+                <tr *ngFor="let p of passengers">
+                    <div class="form-group form-check">
+                        <button class="btn btn-success" (click)="exist(p)">Add this</button> 
+                        <!-- <input type="radio" name="pas" #qwe [value="p"]>
+                        <label >Add</label><br>      -->
+                    </div>   
+                           
+
+                    <td>{{p.Pname}}</td>
+                    <td>{{p.Gender}}</td>
+                    <td>{{p.Age}}</td>
+                </tr>
+                   
+            </tbody>
+            <br/>
+            <br/>
+            <br/>
+ 
+    </table>
+
+</div>
+<div>
+  <button *ngIf="s" type="submit" class="btn btn-primary" (click)="insertPassenger()" style="margin: 2%; float: unset;">Add Passenger</button>
+  <div *ngIf="s==false">
+  <button type="submit" class="btn btn-primary" (click)="proceed()" style="margin: 2%; float: unset;">Continue</button>
+</div>
+</div>
+
+</section>
+</body>
+
+

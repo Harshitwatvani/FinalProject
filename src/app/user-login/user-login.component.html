@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body class="mat-typography">
+
+
+<script>
+// Get the modal
+
+</script>
+<div class="maindiv">
+  <form [formGroup]="myForm"  class="modal-content animate" action="/action_page.php" method="post">
+
+    <div class="container">
+      <label ><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" [value]="e" formControlName="email" >
+      <p *ngIf="email.touched&&email.invalid">
+        <span class="alert alert-danger" *ngIf="email.errors.required"> Username cannot be empty</span>
+        <span class="alert alert-danger" *ngIf="email.errors.pattern"> This is not a correct username</span>
+    </p>
+
+      <label ><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" [value]="p" formControlName="pass"  >
+      <p *ngIf="pass.touched&&pass.invalid">
+        <span class="alert alert-danger" *ngIf="pass.errors.required"> Password cannot be empty</span>
+       
+    </p>    
+      <button type="submit" (click)="login()">Login</button>
+      <!-- <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label> -->
+    </div>
+    <div *ngIf="result">
+      {{result}}
+    </div>
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" (click)="cancel()" class="cancelbtn">Cancel</button>
+      <span class="psw"> <a routerLink="/forgot-password">ForgotPassword?</a></span>
+      <span class="psw">Don't have an account? <br><a routerLink="/register">Sign Up</a></span>
+    </div>
+    
+  </form>
+</div>
+</body>
+</html>

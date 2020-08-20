@@ -1,0 +1,185 @@
+
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left" >
+            <h3><b>User Registeration </b></h3>
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h3>Welcome</h3>
+            <p>You are 30 seconds away from booking  your first flight with us!</p>
+
+        </div>
+        <div class="formregister" >
+
+        <div class="form-row align-items-center"> 
+            <form [formGroup]="myForm" class="border border-light form p-3 mb-2 bg-light text-dark">
+                
+                <div class="row">  
+                <div class="col">
+                    <label for="formGroupExampleInput">Title</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter title" formControlName="title"/>
+                    <p style="margin: 10px;" *ngIf="title.touched&&title.invalid">
+                        <span class="valid-feedback" *ngIf="title.errors.required"> Title cannot be empty</span>
+                        <span class="alert alert-danger" *ngIf="title.errors.maxlength"> Title cannot be longer than 20 charactors</span>
+                    </p>    
+                  </div>
+
+                  
+                  <div class="col">
+                    <label for="formGroupExampleInput">First Name</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter first name" formControlName="fname"/>
+                    <p  *ngIf="fname.touched&&fname.invalid">
+                        <span class="alert alert-danger" *ngIf="fname.errors.required"> First Name cannot be empty</span>
+                        <span class="alert alert-danger" *ngIf="fname.errors.maxlength"> First Name cannot be longer than 60 charactors</span>
+                    </p>     
+                  </div>
+
+                  <div class="col">
+                    <label for="formGroupExampleInput">Last Name</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter last name" formControlName="lname"/>
+                    <p  *ngIf="lname.touched&&lname.invalid">
+                        <span class="alert alert-danger" *ngIf="lname.errors.maxlength"> Last Name cannot be longer than 60 charactors</span>
+                    </p>     
+                  </div>
+                </div>
+
+                <div class="row">  
+                    <div class="col">
+                      <label for="formGroupExampleInput">Date of Birth</label>
+                      <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Enter date of birth" formControlName="dob"/>
+                      <p *ngIf="dob.touched&&dob.invalid">
+                          <span class="alert alert-danger" *ngIf="dob.errors.required"> Date of birth cannot be empty</span>
+                      </p>
+                    </div>
+  
+                    <div class="col">
+                      <label for="formGroupExampleInput">Phone no.</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Phone number" formControlName="num"/>
+                      <p *ngIf="num.touched&&num.invalid">
+                          <span class="alert alert-danger" *ngIf="num.errors.required"> PhoneNo cannot be empty</span>
+                          <span class="alert alert-danger" *ngIf="num.errors.maxlength"> Phone number should be of 10 digits</span>
+                          <span class="alert alert-danger" *ngIf="num.errors.minlength"> Phone number should be of 10 digits</span>
+                      </p> 
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Email ID</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your email id" formControlName="email"/>
+                    <p *ngIf="email.touched&&email.invalid">
+                        <span class="alert alert-danger" *ngIf="email.errors.required"> Email cannot be empty</span>
+                        <span class="alert alert-danger" *ngIf="email.errors.pattern"> This is not a correct email</span>
+                    </p> 
+                  </div>
+
+                  
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Password</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example password" formControlName="pass"/>
+                    <p *ngIf="pass.touched&&pass.invalid">
+                        <span class="alert alert-danger" *ngIf="pass.errors.required"> Password cannot be empty</span>
+                    </p> 
+                  </div>
+
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Confirm Password</label>
+                    <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Enter password again" formControlName="cpass"/>
+                       
+                    <span class="alert alert-danger" *ngIf="b"> Your password is different</span>
+                  </div>
+                  
+
+
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Security Question:</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your Nick name" formControlName="security"/>
+                    <p *ngIf="security.touched&&security.invalid">
+                        <span class="alert alert-danger" *ngIf="security.errors.required"> Security Answer cannot be empty</span>
+                        <span class="alert alert-danger" *ngIf="security.errors.maxlength"> Security Answer caanot be more than 20 char</span>
+                        
+                    </p> 
+                  </div>
+
+
+                <span *ngIf="c">This email ID already exists</span>   
+                <div style="float: right;">
+                    <button  (click)="addUser()" class="btn btn-success" >Submit</button> 
+                </div>
+                <div style="float: left;">
+                    <button (click)="reset()" class="btn btn-info">Reset</button>
+                </div>
+            </form>
+        </div>
+</div>
+            
+</div>
+
+
+<!-- <h3>User Registeration</h3>
+<div class="alert alert-success"> 
+    <form [formGroup]="myForm">
+        <label>Title </label>       
+            <input type="text" formControlName="title"/>   
+            <p style="margin: 10px;" *ngIf="title.touched&&title.invalid">
+                <span class="alert alert-danger" *ngIf="title.errors.required"> Title cannot be empty</span>
+                <span class="alert alert-danger" *ngIf="title.errors.maxlength"> Title cannot be longer than 20 charactors</span>
+            </p>        
+        <label>First Name</label>
+            <input type="text"  formControlName="fname"/> 
+            <p  *ngIf="fname.touched&&fname.invalid">
+                <span class="alert alert-danger" *ngIf="fname.errors.required"> First Name cannot be empty</span>
+                <span class="alert alert-danger" *ngIf="fname.errors.maxLength"> First Name cannot be longer than 60 charactors</span>
+            </p>            
+       <label>Last Name</label>
+            <input type="text"  formControlName="lname"/>
+            <p  *ngIf="lname.touched&&lname.invalid">
+                <span class="alert alert-danger" *ngIf="lname.errors.maxlength"> Last Name cannot be longer than 60 charactors</span>
+            </p>            
+<br/>   
+   
+  
+        <label>Email ID</label>
+            <input type="text"  formControlName="email"/><br/>
+            <p *ngIf="email.touched&&email.invalid">
+                <span class="alert alert-danger" *ngIf="email.errors.required"> Email cannot be empty</span>
+                <span class="alert alert-danger" *ngIf="email.errors.pattern"> This is not a correct email</span>
+            </p>
+        <label>Password</label>
+                  <input type="password"  formControlName="pass"/><br/> 
+                  <p *ngIf="pass.touched&&pass.invalid">
+                    <span class="alert alert-danger" *ngIf="pass.errors.required"> Password cannot be empty</span>
+                   
+                </p>    
+   
+        <label>Confirm Password</label>        
+            <input type="password" formControlName="cpass"/><br/>
+            <span class="alert alert-danger" *ngIf="b"> Your password is different</span>
+  
+        <label>Date of Birth</label><br/>
+     
+            <input type="date"  formControlName="dob"/><br/>
+            <p *ngIf="dob.touched&&dob.invalid">
+                <span class="alert alert-danger" *ngIf="dob.errors.required"> Date of birth cannot be empty</span>
+            </p>
+            <span class="alert alert-danger" *ngIf="d">Enter Date of birth</span>
+      
+        <label>Phone no.</label>
+                  <input type="text"  formControlName="num"/>   <br/>
+                  <p *ngIf="num.touched&&num.invalid">
+                    <span class="alert alert-danger" *ngIf="num.errors.required"> PhoneNo cannot be empty</span>
+                    <span class="alert alert-danger" *ngIf="num.errors.maxlength"> Phone number should be of 10 digits</span>
+                    <span class="alert alert-danger" *ngIf="num.errors.minlength"> Phone number should be of 10 digits</span>
+                </p> 
+                <label>Security Question:<br>
+                Enter your Nick name</label>
+                <input type="text"  formControlName="security"/><br/> 
+                <p *ngIf="security.touched&&security.invalid">
+                  <span class="alert alert-danger" *ngIf="security.errors.required"> Security Answer cannot be empty</span>
+                  <span class="alert alert-danger" *ngIf="security.errors.maxlength"> Security Answer caanot be more than 20 char</span>
+                 
+              </p>    
+                <span *ngIf="c">This email ID already exists</span>   
+        <button  (click)="addUser()" class="btn btn-primary" >Submit</button> 
+        <button (click)="reset()" class="btn btn-info">Reset</button>
+            </form>
+</div> -->

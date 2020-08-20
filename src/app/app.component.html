@@ -1,0 +1,39 @@
+<!-- <app-navbarhome></app-navbarhome> -->
+
+
+<div *ngIf="cookieSer.get('Type')? cookieSer.get('Type') == 'Admin': false">
+   <app-navbaradmin></app-navbaradmin>
+</div>
+<div *ngIf="cookieSer.get('Type')? false : true">
+   <app-navbarhome></app-navbarhome>
+</div>
+<div *ngIf="cookieSer.get('Type')? cookieSer.get('Type') === 'User': false">
+   <app-navbaruser></app-navbaruser>
+</div>
+<router-outlet></router-outlet>
+<!-- <app-navbarlogin></app-navbarlogin> -->
+<!-- <app-user-login></app-user-login>  -->
+<!-- <app-printticket></app-printticket> -->
+<!-- <app-forgot-password></app-forgot-password> 
+   <app-user-registeration></app-user-registeration> 
+
+ 
+  <app-admin-login></app-admin-login>
+ <app-add-flight></app-add-flight>
+ <app-flight-details></app-flight-details> 
+ <app-passengers></app-passengers> 
+<app-show-passengers></app-show-passengers>
+ <app-change-password></app-change-password> 
+
+<app-add-trip></app-add-trip>
+<app-edit-trip></app-edit-trip>
+<app-cancelticket></app-cancelticket>
+<app-navbaradmin></app-navbaradmin>
+
+<app-navbaruser></app-navbaruser>
+
+<app-viewbookings></app-viewbookings> -->
+<!-- <app-flight-search></app-flight-search>
+<app-seat-book></app-seat-book> -->
+ <!-- <app-passengers></app-passengers>  -->
+ <!-- <app-details-confirmation></app-details-confirmation> -->

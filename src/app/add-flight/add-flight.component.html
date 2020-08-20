@@ -1,0 +1,81 @@
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<h3 style="font-family:cursive;"><b>Add flight details!!</b></h3>
+  <div class="maindiv">
+    <div class="form-row align-items-center" > 
+
+        <form [formGroup]="myForm" class="border border-light form p-3 mb-2 bg-dark text-light">
+          <div class="row"> 
+            <div class="col">
+                <label >From</label><br>
+                <input type="text" formControlName="from" ><br>
+                <p *ngIf="from.touched&&from.invalid">
+                  <span class="alert alert-danger" *ngIf="from.errors.required"> This cannot be empty</span>
+                </p>
+            </div>
+            <div class="col">
+                <label >TO</label><br>
+                <input type="text" formControlName="to" ><br>
+                <p *ngIf="to.touched&&to.invalid">
+                  <span class="alert alert-danger" *ngIf="to.errors.required"> This cannot be empty</span>
+                </p>
+            </div>
+          </div>
+        </form>
+        <div class="container"> 
+          <div class="box"> 
+            <div class="box-row"> 
+              <div class="box-cell box1">
+                  <label for="Cabin Type">Cabin type</label><br>
+                
+                    <ul class="checkbox-items">
+                      <li *ngFor="let item of FairDataList">
+                        <input type="checkbox" name="" id="" [(ngModel)]="item.isChecked" (change)="changeSelection()">{{item.label}}
+                      </li>
+                    </ul>
+                    <span  class="alert alert-danger" *ngIf="ct">Select atleast one cabin </span>
+                   <p *ngIf="e">
+                    <label>Economy Fair </label>Rs.<input type="text" [(ngModel)]="flight.EconomyClassFair"/><br>
+                
+                    </p>
+                  <p *ngIf="b">
+                   <label>Business Fair </label>Rs.<input type="text" [(ngModel)]="flight.BusinessClassFair"/><br>
+                </p>
+                <p *ngIf="f">
+                  <label>First Class Fair</label>Rs.<input type="text" [(ngModel)]="flight.FirstClassFair" /><br>
+                  
+                </p>
+
+  
+  
+                 <h6>No of Selected Cabins: {{FairItemsList.length}} </h6>
+                </div>
+                <div class="box-cell box2"> 
+                <div class="row">
+                  <div class="col">
+               <h4>List of Days</h4>
+
+      <ul class="checkbox-items">
+        <li *ngFor="let item of checkboxesDataList">
+          <input type="checkbox" name="" id="" [(ngModel)]="item.isChecked" (change)="changeSelection()">{{item.label}}
+        </li>
+        <span  class="alert alert-danger" *ngIf="td">Select atleast one day </span>
+      </ul>
+      <h6>No of Selected Days: {{selectedItemsList.length}} </h6>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+</div>
+</div>
+<div>
+  <button type="button"   class="btn btn-primary"  (click)="add()">Add Flight</button>
+</div>
+
+</div>
+</div>
+
+

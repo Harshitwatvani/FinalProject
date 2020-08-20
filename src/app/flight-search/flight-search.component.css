@@ -1,0 +1,78 @@
+body{
+  text-align: center;
+  /* background-color: rgb(66, 76, 109); */
+  background-image: linear-gradient(rgb(82, 172, 245), darkblue);
+  
+}
+.maindiv{
+  margin: auto;
+}
+.formclass{
+    width: 100%;
+    margin: auto;
+    display: block;
+    padding: 5%;
+    
+}
+
+.form-horizontal{
+  width: 100%;
+  margin-left: 5%;
+  display: block;
+}
+
+.myForm{
+  width: 50%;
+}
+.border{
+ width: 70%;
+ margin: 5%;
+}
+p{
+  width: 100%;
+  height: 10%;
+}
+span{
+  width: 100%;
+  height: 10%;
+}
+	
+
+
+.box{
+  position: relative;
+  /* width: 400px;
+  height: 400px;
+  background: linear-gradient(#6ab9ff, #0090d2);
+  border-radius: 50%;
+  border: 10px solid #fff;
+  box-shadow: inset 0 0 100px rgba(0,0,0,.8),
+          0 20px 100px rgba(0,0,0,.8); */
+}
+.plane{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: animate-plane 1s linear infinite;
+}
+@keyframes animate-plane
+{
+  0%
+  {
+    transform: translate(2px,2px);
+  }
+  50%
+  {
+    transform: translate(2px,2px);
+  }
+  100%
+  {
+    transform: translate(2px,2px);
+  }
+}

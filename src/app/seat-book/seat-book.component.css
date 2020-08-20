@@ -1,0 +1,31 @@
+button{
+    min-width: 6vw;
+}
+
+.X{
+
+}
+.maindiv, table{
+    margin-left: 16%;
+    margin-top: 5%;
+    display: block;
+}
+.click{
+    margin-left: 45%;
+    display: block;
+}
+.B{
+    background-color: rgb(231, 16, 16);
+}
+
+.E{
+    background-color: rgb(209, 206, 25);
+}
+
+.F{
+    background-color: rgb(64, 77, 192);
+}
+
+.Y{
+    background-color: darkgreen;
+}

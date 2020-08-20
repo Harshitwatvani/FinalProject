@@ -1,0 +1,18 @@
+.mainDiv{
+    margin: auto;
+    margin-top: 2%;
+    width: 50%;
+    display: block;
+    background-color: rgb(0, 0, 68);
+    padding: 3%;
+    border-radius: 25px;
+    color: wheat;
+}
+
+.childDiv{
+    padding-bottom: 2%;
+}
+
+.buttonWidth{
+    width: 25%;
+}

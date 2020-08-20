@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b71e184fcf894f89baa2754828359f97" Name="Diagram1">
+        <EntityTypeShape EntityType="AirlineReservationModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tbl_AircraftDetails" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tbl_Airports" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tbl_FlightDetails" Width="1.5" PointX="3.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblAdmin" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblBooking" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblpassenger_table" Width="1.5" PointX="10.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblPayment" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblSeat" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblTicket_table" Width="1.5" PointX="8.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblTrip" Width="1.5" PointX="6" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblUser" Width="1.5" PointX="3.75" PointY="11.375" IsExpanded="true" />
+        <AssociationConnector Association="AirlineReservationModel.FK__tblSeats__Airpla__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK__tblTrips__Airpla__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK__tblTrips__Flight__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK__tblBookin__UserI__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK__tblTicket_t__BID__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK__tblTicket_t__BID__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.pk_Bid" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK__tblpassen__Ticke__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK__tblTicket__TripI__32E0915F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

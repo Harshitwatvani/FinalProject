@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+
+
+<script>
+// Get the modal
+
+// When the user clicks anywhere outside of the modal, close it
+
+</script>
+<div>
+  <form [formGroup]="myForm" class="modal-content animate" action="/action_page.php" method="post">
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" [value]="e" formControlName="email" >
+      <p *ngIf="email.touched&&email.invalid">
+        <span class="alert alert-danger" *ngIf="email.errors.required"> Username cannot be empty</span>
+        <span class="alert alert-danger" *ngIf="email.errors.pattern"> This is not a correct username</span>
+    </p>
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" [value]="e" formControlName="pass">
+      <p *ngIf="pass.touched&&pass.invalid">
+        <span class="alert alert-danger" *ngIf="pass.errors.required"> Password cannot be empty</span>
+       
+    </p>    
+      <button type="submit" (click)="login()">Login</button>
+      <!-- <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label> -->
+    </div>
+    <div *ngIf="result">
+      {{result}}
+    </div>
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" (click) ="cancel()"class="cancelbtn">Reset</button>
+      <!-- <span class="psw"> <a href="#">ForgotPassword?</a></span>
+      <span class="psw">Don't have an account? <a href="#">Sign Up</a></span> -->
+    </div>
+    
+  </form>
+</div>
+</body>
+</html>

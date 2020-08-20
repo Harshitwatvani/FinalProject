@@ -1,0 +1,26 @@
+
+<button (click)="fetchPassengers()">Show previous Passengers</button>
+<div class="table-responsive" style="width: 70%; margin: auto;">
+    <table class="table" >
+        <thead>
+            <tr>
+                <th>Passenger Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <!-- <th>SeatId</th> -->
+            </tr>
+        </thead>
+            <tbody>
+                <tr *ngFor="let p of passengers">
+                    <td>{{p.Pname}}</td>
+                    <td>{{p.Gender}}</td>
+                    <td>{{p.Age}}</td>
+                </tr>
+            </tbody>
+            <br/>
+            <br/>
+            <br/>
+ 
+    </table>
+
+</div>

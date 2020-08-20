@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AirlineReservationModelStoreContainer" CdmEntityContainer="AirlineReservationEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="AirlineReservationModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_AircraftDetails">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tbl_AircraftDetails">
+        <MappingFragment StoreEntitySet="tbl_AircraftDetails">
+          <ScalarProperty Name="Airplane_no" ColumnName="Airplane_no" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="CabinType" ColumnName="CabinType" />
+          <ScalarProperty Name="Column_no" ColumnName="Column_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Airports">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tbl_Airports">
+        <MappingFragment StoreEntitySet="tbl_Airports">
+          <ScalarProperty Name="IATA_code" ColumnName="IATA_code" />
+          <ScalarProperty Name="ICAO_code" ColumnName="ICAO_code" />
+          <ScalarProperty Name="airport_name" ColumnName="airport_name" />
+          <ScalarProperty Name="city_name" ColumnName="city_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_FlightDetails">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tbl_FlightDetails">
+        <MappingFragment StoreEntitySet="tbl_FlightDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+          <ScalarProperty Name="TravelDays" ColumnName="TravelDays" />
+          <ScalarProperty Name="DeparturePoint" ColumnName="DeparturePoint" />
+          <ScalarProperty Name="ArrivalPoint" ColumnName="ArrivalPoint" />
+          <ScalarProperty Name="CabinType" ColumnName="CabinType" />
+          <ScalarProperty Name="EconomyClassFair" ColumnName="EconomyClassFair" />
+          <ScalarProperty Name="BusinessClassFair" ColumnName="BusinessClassFair" />
+          <ScalarProperty Name="FirstClassFair" ColumnName="FirstClassFair" />
+          <ScalarProperty Name="FlightStatus" ColumnName="FlightStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAdmins">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblAdmin">
+        <MappingFragment StoreEntitySet="tblAdmin">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PreFix" ColumnName="PreFix" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Passwords" ColumnName="Passwords" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBookings">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblBooking">
+        <MappingFragment StoreEntitySet="tblBookings">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="prefix" ColumnName="prefix" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+          <ScalarProperty Name="Booking_Status" ColumnName="Booking Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblpassenger_table">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblpassenger_table">
+        <MappingFragment StoreEntitySet="tblpassenger_table">
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="PassengerID" ColumnName="PassengerID" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="PName" ColumnName="PName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPayments">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblPayment">
+        <MappingFragment StoreEntitySet="tblPayments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="prefix" ColumnName="prefix" />
+          <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+          <ScalarProperty Name="Payment_Amount" ColumnName="Payment Amount" />
+          <ScalarProperty Name="Payment_Status" ColumnName="Payment Status" />
+          <ScalarProperty Name="Payment_date" ColumnName="Payment date" />
+          <ScalarProperty Name="Bid" ColumnName="Bid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSeats">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblSeat">
+        <MappingFragment StoreEntitySet="tblSeats">
+          <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+          <ScalarProperty Name="Airplane_No" ColumnName="Airplane_No" />
+          <ScalarProperty Name="SeatType" ColumnName="SeatType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTicket_table">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblTicket_table">
+        <MappingFragment StoreEntitySet="tblTicket_table">
+          <ScalarProperty Name="TicketStatus" ColumnName="TicketStatus" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTrips">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblTrip">
+        <MappingFragment StoreEntitySet="tblTrips">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="prefix" ColumnName="prefix" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+          <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+          <ScalarProperty Name="Airplane_No" ColumnName="Airplane_No" />
+          <ScalarProperty Name="TripDate" ColumnName="TripDate" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="Security" ColumnName="Security" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PreFix" ColumnName="PreFix" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="proc_DetailsConfirmation" FunctionName="AirlineReservationModel.Store.proc_DetailsConfirmation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_DetailsConfirmation_Result">
+          <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+          <ScalarProperty Name="DeparturePoint" ColumnName="DeparturePoint" />
+          <ScalarProperty Name="ArrivalPoint" ColumnName="ArrivalPoint" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+          <ScalarProperty Name="PName" ColumnName="PName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_UserRegisteration" FunctionName="AirlineReservationModel.Store.proc_UserRegisteration" />
+    <FunctionImportMapping FunctionImportName="proc_UserLogin" FunctionName="AirlineReservationModel.Store.proc_UserLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_UserLogin_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_AdminLogin" FunctionName="AirlineReservationModel.Store.proc_AdminLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_AdminLogin_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Passwords" ColumnName="Passwords" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_AddFlight" FunctionName="AirlineReservationModel.Store.proc_AddFlight" />
+    <FunctionImportMapping FunctionImportName="proc_EditFlight" FunctionName="AirlineReservationModel.Store.proc_EditFlight" />
+    <FunctionImportMapping FunctionImportName="proc_ShowFlight" FunctionName="AirlineReservationModel.Store.proc_ShowFlight">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_ShowFlight_Result">
+          <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+          <ScalarProperty Name="TravelDays" ColumnName="TravelDays" />
+          <ScalarProperty Name="DeparturePoint" ColumnName="DeparturePoint" />
+          <ScalarProperty Name="ArrivalPoint" ColumnName="ArrivalPoint" />
+          <ScalarProperty Name="CabinType" ColumnName="CabinType" />
+          <ScalarProperty Name="EconomyClassFair" ColumnName="EconomyClassFair" />
+          <ScalarProperty Name="BusinessClassFair" ColumnName="BusinessClassFair" />
+          <ScalarProperty Name="FirstClassFair" ColumnName="FirstClassFair" />
+          <ScalarProperty Name="FlightStatus" ColumnName="FlightStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_displaypassengers" FunctionName="AirlineReservationModel.Store.proc_displaypassengers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_displaypassengers_Result">
+          <ScalarProperty Name="Pname" ColumnName="Pname" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_insertpassengers" FunctionName="AirlineReservationModel.Store.proc_insertpassengers" />
+    <FunctionImportMapping FunctionImportName="proc_DetailsConfirmation1" FunctionName="AirlineReservationModel.Store.proc_DetailsConfirmation1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_DetailsConfirmation1_Result">
+          <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+          <ScalarProperty Name="DeparturePoint" ColumnName="DeparturePoint" />
+          <ScalarProperty Name="ArrivalPoint" ColumnName="ArrivalPoint" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+          <ScalarProperty Name="PName" ColumnName="PName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_UserDetails" FunctionName="AirlineReservationModel.Store.proc_UserDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_UserDetails_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PreFix" ColumnName="PreFix" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_UserRegisteration1" FunctionName="AirlineReservationModel.Store.proc_UserRegisteration1" />
+    <FunctionImportMapping FunctionImportName="proc_UserDetails1" FunctionName="AirlineReservationModel.Store.proc_UserDetails1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_UserDetails1_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PreFix" ColumnName="PreFix" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Security" ColumnName="Security" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_getUserByEmail" FunctionName="AirlineReservationModel.Store.proc_getUserByEmail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_getUserByEmail_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Security" ColumnName="Security" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_updateUser" FunctionName="AirlineReservationModel.Store.proc_updateUser" />
+    <FunctionImportMapping FunctionImportName="proc_updateUser1" FunctionName="AirlineReservationModel.Store.proc_updateUser1" />
+    <FunctionImportMapping FunctionImportName="proc_updateUser2" FunctionName="AirlineReservationModel.Store.proc_updateUser2" />
+    <FunctionImportMapping FunctionImportName="proc_Booking" FunctionName="AirlineReservationModel.Store.proc_Booking" />
+    <FunctionImportMapping FunctionImportName="proc_FlightSelect" FunctionName="AirlineReservationModel.Store.proc_FlightSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_FlightSelect_Result">
+          <ScalarProperty Name="Airplane_no" ColumnName="Airplane_no" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="EconomyClassFair" ColumnName="EconomyClassFair" />
+          <ScalarProperty Name="BusinessClassFair" ColumnName="BusinessClassFair" />
+          <ScalarProperty Name="FirstClassFair" ColumnName="FirstClassFair" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_GetBookings" FunctionName="AirlineReservationModel.Store.proc_GetBookings">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_GetBookings_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+          <ScalarProperty Name="Booking_Status" ColumnName="Booking Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_TicketBook" FunctionName="AirlineReservationModel.Store.proc_TicketBook" />
+    <FunctionImportMapping FunctionImportName="addTrip" FunctionName="AirlineReservationModel.Store.addTrip" />
+    <FunctionImportMapping FunctionImportName="allTrips" FunctionName="AirlineReservationModel.Store.allTrips" />
+    <FunctionImportMapping FunctionImportName="createTrip" FunctionName="AirlineReservationModel.Store.createTrip" />
+    <FunctionImportMapping FunctionImportName="flightDetails" FunctionName="AirlineReservationModel.Store.flightDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.flightDetails_Result">
+          <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+          <ScalarProperty Name="DeparturePoint" ColumnName="DeparturePoint" />
+          <ScalarProperty Name="ArrivalPoint" ColumnName="ArrivalPoint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="locations" FunctionName="AirlineReservationModel.Store.locations" />
+    <FunctionImportMapping FunctionImportName="passengerInfo" FunctionName="AirlineReservationModel.Store.passengerInfo" />
+    <FunctionImportMapping FunctionImportName="planeInfo" FunctionName="AirlineReservationModel.Store.planeInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.planeInfo_Result">
+          <ScalarProperty Name="Airplane_no" ColumnName="Airplane_no" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Column_no" ColumnName="Column_no" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="planes" FunctionName="AirlineReservationModel.Store.planes" />
+    <FunctionImportMapping FunctionImportName="planeSeatInfo" FunctionName="AirlineReservationModel.Store.planeSeatInfo" />
+    <FunctionImportMapping FunctionImportName="planeSeats" FunctionName="AirlineReservationModel.Store.planeSeats">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.planeSeats_Result">
+          <ScalarProperty Name="SeatID" ColumnName="SeatID" />
+          <ScalarProperty Name="SeatType" ColumnName="SeatType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SeatPrice" FunctionName="AirlineReservationModel.Store.SeatPrice">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.SeatPrice_Result">
+          <ScalarProperty Name="BusinessClassFair" ColumnName="BusinessClassFair" />
+          <ScalarProperty Name="EconomyClassFair" ColumnName="EconomyClassFair" />
+          <ScalarProperty Name="FirstClassFair" ColumnName="FirstClassFair" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="time" FunctionName="AirlineReservationModel.Store.time">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.time_Result">
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TripByID" FunctionName="AirlineReservationModel.Store.TripByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.TripByID_Result">
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+          <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+          <ScalarProperty Name="Airplane_No" ColumnName="Airplane_No" />
+          <ScalarProperty Name="TripDate" ColumnName="TripDate" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="alterTrip" FunctionName="AirlineReservationModel.Store.alterTrip" />
+    <FunctionImportMapping FunctionImportName="sp_cancelSeat" FunctionName="AirlineReservationModel.Store.sp_cancelSeat" />
+    <FunctionImportMapping FunctionImportName="sp_cancelTicket" FunctionName="AirlineReservationModel.Store.sp_cancelTicket">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.sp_cancelTicket_Result">
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+          <ScalarProperty Name="TripDate" ColumnName="TripDate" />
+          <ScalarProperty Name="Airplane_No" ColumnName="Airplane_No" />
+          <ScalarProperty Name="DeparturePoint" ColumnName="DeparturePoint" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="ArrivalPoint" ColumnName="ArrivalPoint" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+          <ScalarProperty Name="TicketStatus" ColumnName="TicketStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_cancelticketStatus" FunctionName="AirlineReservationModel.Store.sp_cancelticketStatus" />
+    <FunctionImportMapping FunctionImportName="sp_downloadticket" FunctionName="AirlineReservationModel.Store.sp_downloadticket">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.sp_downloadticket_Result">
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+          <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+          <ScalarProperty Name="TripDate" ColumnName="TripDate" />
+          <ScalarProperty Name="Airplane_No" ColumnName="Airplane_No" />
+          <ScalarProperty Name="DeparturePoint" ColumnName="DeparturePoint" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="ArrivalPoint" ColumnName="ArrivalPoint" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="PName" ColumnName="PName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_viewBooking" FunctionName="AirlineReservationModel.Store.sp_viewBooking">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.sp_viewBooking_Result">
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+          <ScalarProperty Name="TripDate" ColumnName="TripDate" />
+          <ScalarProperty Name="Airplane_No" ColumnName="Airplane_No" />
+          <ScalarProperty Name="DeparturePoint" ColumnName="DeparturePoint" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="ArrivalPoint" ColumnName="ArrivalPoint" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+          <ScalarProperty Name="PName" ColumnName="PName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_getTicket" FunctionName="AirlineReservationModel.Store.proc_getTicket">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_getTicket_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+          <ScalarProperty Name="TicketStatus" ColumnName="TicketStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_getUserIDbyEmail" FunctionName="AirlineReservationModel.Store.proc_getUserIDbyEmail" />
+    <FunctionImportMapping FunctionImportName="proc_FlightSelect1" FunctionName="AirlineReservationModel.Store.proc_FlightSelect1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_FlightSelect1_Result">
+          <ScalarProperty Name="Airplane_no" ColumnName="Airplane_no" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="EconomyClassFair" ColumnName="EconomyClassFair" />
+          <ScalarProperty Name="BusinessClassFair" ColumnName="BusinessClassFair" />
+          <ScalarProperty Name="FirstClassFair" ColumnName="FirstClassFair" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_payment" FunctionName="AirlineReservationModel.Store.proc_payment" />
+    <FunctionImportMapping FunctionImportName="proc_getpayment" FunctionName="AirlineReservationModel.Store.proc_getpayment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_getpayment_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="prefix" ColumnName="prefix" />
+          <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+          <ScalarProperty Name="Payment_Amount" ColumnName="Payment Amount" />
+          <ScalarProperty Name="Payment_Status" ColumnName="Payment Status" />
+          <ScalarProperty Name="Payment_date" ColumnName="Payment date" />
+          <ScalarProperty Name="Bid" ColumnName="Bid" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="addTripsDetails" FunctionName="AirlineReservationModel.Store.addTripsDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.addTripsDetails_Result">
+          <ScalarProperty Name="FlightId" ColumnName="FlightId" />
+          <ScalarProperty Name="DeparturePoint" ColumnName="DeparturePoint" />
+          <ScalarProperty Name="ArrivalPoint" ColumnName="ArrivalPoint" />
+          <ScalarProperty Name="TravelDays" ColumnName="TravelDays" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_cancelTicket1" FunctionName="AirlineReservationModel.Store.sp_cancelTicket1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.sp_cancelTicket1_Result">
+          <ScalarProperty Name="BID" ColumnName="BID" />
+          <ScalarProperty Name="TicketID" ColumnName="TicketID" />
+          <ScalarProperty Name="Booking_Date" ColumnName="Booking_Date" />
+          <ScalarProperty Name="TripDate" ColumnName="TripDate" />
+          <ScalarProperty Name="Airplane_No" ColumnName="Airplane_No" />
+          <ScalarProperty Name="DeparturePoint" ColumnName="DeparturePoint" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="ArrivalPoint" ColumnName="ArrivalPoint" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+          <ScalarProperty Name="TicketStatus" ColumnName="TicketStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="passengers" FunctionName="AirlineReservationModel.Store.passengers" />
+    <FunctionImportMapping FunctionImportName="proc_FlightSelect2" FunctionName="AirlineReservationModel.Store.proc_FlightSelect2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.proc_FlightSelect2_Result">
+          <ScalarProperty Name="Airplane_no" ColumnName="Airplane_no" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="EconomyClassFair" ColumnName="EconomyClassFair" />
+          <ScalarProperty Name="BusinessClassFair" ColumnName="BusinessClassFair" />
+          <ScalarProperty Name="FirstClassFair" ColumnName="FirstClassFair" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchFlight" FunctionName="AirlineReservationModel.Store.SearchFlight">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.SearchFlight_Result">
+          <ScalarProperty Name="Airplane_no" ColumnName="Airplane_no" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="EconomyClassFair" ColumnName="EconomyClassFair" />
+          <ScalarProperty Name="BusinessClassFair" ColumnName="BusinessClassFair" />
+          <ScalarProperty Name="FirstClassFair" ColumnName="FirstClassFair" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchFlight1" FunctionName="AirlineReservationModel.Store.SearchFlight1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.SearchFlight1_Result">
+          <ScalarProperty Name="Airplane_no" ColumnName="Airplane_no" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="EconomyClassFair" ColumnName="EconomyClassFair" />
+          <ScalarProperty Name="BusinessClassFair" ColumnName="BusinessClassFair" />
+          <ScalarProperty Name="FirstClassFair" ColumnName="FirstClassFair" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchFlight2" FunctionName="AirlineReservationModel.Store.SearchFlight2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AirlineReservationModel.SearchFlight2_Result">
+          <ScalarProperty Name="Airplane_no" ColumnName="Airplane_no" />
+          <ScalarProperty Name="TripID" ColumnName="TripID" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="EconomyClassFair" ColumnName="EconomyClassFair" />
+          <ScalarProperty Name="BusinessClassFair" ColumnName="BusinessClassFair" />
+          <ScalarProperty Name="FirstClassFair" ColumnName="FirstClassFair" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

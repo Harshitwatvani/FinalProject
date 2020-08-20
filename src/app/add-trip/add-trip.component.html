@@ -1,0 +1,59 @@
+<body>
+    <section id="mainsec">
+        <div class="mainDiv">
+            <div class="childDiv">
+                <span>Flight ID</span>
+                <select class="form-control" #flight (change)="insertDetailInfo(flight.value)">
+                    <option></option>
+                    <option *ngFor="let item of data | keyvalue" [value]="data[item.key].FlightId">{{data[item.key].FlightId}}</option>
+                </select>
+        </div>
+    <div class="childDiv">
+        <span>Airplane No. </span>
+        <select class="form-control" #plane (change) = "insertPlane(plane.value)">
+            <option></option>
+            <option *ngFor="let item of planes" [value]="item">{{item}}</option>
+        </select>
+        <span class="alert alert-danger" *ngIf="p"> This cannot be empty</span>
+    </div>
+    <div *ngIf="selected.length > 0">
+        <div class="childDiv">
+            <span>Trip Date</span>
+            <!-- <input type= "date" class="form-control" #trip (change) = "addTripDate(trip.value)">  -->
+            <mat-form-field appearance="fill" >
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" [matDatepickerFilter] = "dateClass" [(ngModel)] = "setDate" (dateInput) = "addTripDate($event.value)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker disabled="false"></mat-datepicker>
+              </mat-form-field>
+        </div>
+        <span class="alert alert-danger" *ngIf="d"> This cannot be empty</span>
+        <div class="childDiv">
+            <span>From</span>
+            <input disabled [value]="flights[selected].from?flights[selected].from:''"/>
+        </div>
+        <div class="childDiv">
+            <span>To</span>
+            <input disabled [value]="flights[selected].to?flights[selected].to:''"/>
+        </div>
+        <div class="childDiv">
+            <span>Departure Time </span>
+            <input type="time" id="exampleInput" name="input" #dept (change)="addDept(dept.value)" placeholder="HH:mm:ss" required />
+        </div>
+        <span class="alert alert-danger" *ngIf="dt"> This cannot be empty</span>
+        <div class="childDiv">
+            <span>Arrival Time</span>
+            <input type="time" id="exampleInput" name="input" #arrival (change)="addArrivalTime(arrival.value)" placeholder="HH:mm:ss" required />
+        </div>
+        <span class="alert alert-danger" *ngIf="at"> This cannot be empty</span>
+        <!-- <div class="childDiv">
+            <span>Duration</span>
+            <input type= "text" class="form-control" disabled value="2:00:00">
+        </div> -->
+        <button class="btn btn-primary buttonWidth" (click) = "show()">
+            Add Trip
+        </button>
+    </div>
+</div>
+</section>
+</body>

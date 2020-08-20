@@ -1,0 +1,65 @@
+
+<div class="table-responsive" >
+    <table class="table-responsive" class="table table-hover table-dark " >
+        <thead class="thead-light">
+            <tr>
+                <th>Booking ID </th>
+                <th>Booking Date</th>
+                <th>Trip Date</th>
+                <th>Airplane No.</th>
+                <th>From</th>
+                <th>Departure Time</th>
+                <th>To </th>
+                <th>Arrival Time</th>
+                <th>Payment Amount</th>
+                <th>PassengerName</th>
+                <th>Passenger Gender</th>
+                <th>Passenger Age</th>
+
+            </tr>
+        </thead>
+            <tbody>
+                <div>
+
+                </div>
+                <tr *ngFor="let b of tickets"> 
+                    <td> {{b.BID}} </td>
+                    <td>{{b.Booking_Date}}</td>
+                    <td> {{b.TripDate}} </td>
+                    <td> {{b.Airplane_No}} </td>
+                    <td> {{b.DeparturePoint}} </td>
+                    <td> {{b.Departure_Time}} </td>
+                    <td> {{b.ArrivalPoint}} </td>
+                    <td> {{b.Arrival_Time}} </td>
+                    <td> Rs.{{b.PaymentAmount}} </td>
+                    <td>{{b.PName}}</td>
+                    <td>{{b.Gender}}</td>
+                    <td>{{b.Age}}</td>
+                    <!-- <td>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Passenger Name</th>
+                                    <th>Gender</th>
+                                    <th>Age</th>
+                                    
+                                </tr>
+                            </thead>
+                                <tbody>
+                                    <tr *ngFor="let b of bookings">
+                                        <td>{{b.PName}}</td>
+                                        <td>{{b.Gender}}</td>
+                                        <td>{{b.Age}}</td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </td> -->
+                </tr>
+            </tbody>
+            <br/>
+            <br/>
+            <br/>
+ 
+    </table>
+
+</div>

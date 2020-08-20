@@ -1,0 +1,49 @@
+<body>
+<div class="table-responsive" >
+<table class="table-responsive" class="table table-hover table-dark ">
+    <thead class="thead-light">
+            <tr>
+                <th>Booking ID </th>
+                <th>Ticket ID</th>
+                <th>Booking Date</th>
+                <th>Trip Date</th>
+                <th>Airplane No.</th>
+                <th>From</th>
+                <th>Departure Time</th>
+                <th>To </th>
+                <th>Arrival Time</th>
+                <th>Payment Amount</th>
+                <th>Ticket Status</th>
+                <th>Cancellation</th>
+            </tr>
+        </thead>
+            <tbody>
+                <div>
+
+                </div>
+                <tr *ngFor="let b of tickets"> 
+                    <td> {{b.BID}} </td>
+                    <td> {{b.TicketID}} </td>
+                    <td>{{b.Booking_Date}}</td>
+                    <td> {{b.TripDate}} </td>
+                    <td> {{b.Airplane_No}} </td>
+                    <td> {{b.DeparturePoint}} </td>
+                    <td> {{b.Departure_Time}} </td>
+                    <td> {{b.ArrivalPoint}} </td>
+                    <td> {{b.Arrival_Time}} </td>
+                    <td> Rs. {{b.PaymentAmount}} </td>
+                    <td>{{b.TicketStatus}}</td>
+                    <td> <button (click)="cancelTicket(b)" *ngIf="b.TicketStatus!='Cancelled'">Cancel</button></td>
+                   
+                   
+                </tr>
+            </tbody>
+            <br/>
+            <br/>
+            <br/>
+ 
+    </table>
+
+</div> 
+
+</body>

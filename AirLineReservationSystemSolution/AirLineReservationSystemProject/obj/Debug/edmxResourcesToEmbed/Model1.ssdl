@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirlineReservationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tbl_AircraftDetails">
+    <Key>
+      <PropertyRef Name="Airplane_no" />
+    </Key>
+    <Property Name="Airplane_no" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+    <Property Name="CabinType" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Column_no" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Airports">
+    <Key>
+      <PropertyRef Name="IATA_code" />
+    </Key>
+    <Property Name="IATA_code" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="ICAO_code" Type="varchar" MaxLength="4" />
+    <Property Name="airport_name" Type="varchar" MaxLength="49" Nullable="false" />
+    <Property Name="city_name" Type="varchar" MaxLength="14" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_FlightDetails">
+    <Key>
+      <PropertyRef Name="FlightId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Prefix" Type="varchar" MaxLength="20" />
+    <Property Name="FlightId" Type="varchar" MaxLength="40" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="TravelDays" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="DeparturePoint" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ArrivalPoint" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CabinType" Type="char" MaxLength="10" />
+    <Property Name="EconomyClassFair" Type="nvarchar" MaxLength="10" />
+    <Property Name="BusinessClassFair" Type="nvarchar" MaxLength="10" />
+    <Property Name="FirstClassFair" Type="nvarchar" MaxLength="10" />
+    <Property Name="FlightStatus" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblAdmin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PreFix" Type="varchar" MaxLength="20" />
+    <Property Name="AdminID" Type="varchar" MaxLength="40" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="30" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Passwords" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblBookings">
+    <Key>
+      <PropertyRef Name="BID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prefix" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="UserID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="BID" Type="varchar" MaxLength="40" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="Booking_Date" Type="datetime" Nullable="false" />
+    <Property Name="Booking Status" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblpassenger_table">
+    <Key>
+      <PropertyRef Name="PassengerID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Prefix" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="PassengerID" Type="varchar" MaxLength="40" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="TicketID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="PName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SeatID" Type="varchar" MaxLength="10" />
+    <Property Name="Age" Type="int" />
+  </EntityType>
+  <EntityType Name="tblPayments">
+    <Key>
+      <PropertyRef Name="Payment_ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prefix" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Payment_ID" Type="varchar" MaxLength="40" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="Payment Amount" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Payment Status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Payment date" Type="datetime" />
+    <Property Name="Bid" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="tblSeats">
+    <Key>
+      <PropertyRef Name="SeatID" />
+      <PropertyRef Name="Airplane_No" />
+    </Key>
+    <Property Name="SeatID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Airplane_No" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="SeatType" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblTicket_table">
+    <Key>
+      <PropertyRef Name="TicketID" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Prefix" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TicketID" Type="varchar" MaxLength="40" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="BID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="TripID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="TicketStatus" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="tblTrips">
+    <Key>
+      <PropertyRef Name="TripID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prefix" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TripID" Type="varchar" MaxLength="40" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="FlightID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Airplane_No" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="TripDate" Type="date" Nullable="false" />
+    <Property Name="Departure_Time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Arrival_Time" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PreFix" Type="varchar" MaxLength="20" />
+    <Property Name="UserID" Type="varchar" MaxLength="40" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="20" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="30" />
+    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Security" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__tblBookin__UserI__31EC6D26">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+    <End Role="tblBookings" Type="Self.tblBookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblBookings">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblpassen__Ticke__2E1BDC42">
+    <End Role="tblTicket_table" Type="Self.tblTicket_table" Multiplicity="1" />
+    <End Role="tblpassenger_table" Type="Self.tblpassenger_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTicket_table">
+        <PropertyRef Name="TicketID" />
+      </Principal>
+      <Dependent Role="tblpassenger_table">
+        <PropertyRef Name="TicketID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblSeats__Airpla__30F848ED">
+    <End Role="tbl_AircraftDetails" Type="Self.tbl_AircraftDetails" Multiplicity="1" />
+    <End Role="tblSeats" Type="Self.tblSeats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_AircraftDetails">
+        <PropertyRef Name="Airplane_no" />
+      </Principal>
+      <Dependent Role="tblSeats">
+        <PropertyRef Name="Airplane_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTicket__TripI__32E0915F">
+    <End Role="tblTrips" Type="Self.tblTrips" Multiplicity="1" />
+    <End Role="tblTicket_table" Type="Self.tblTicket_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTrips">
+        <PropertyRef Name="TripID" />
+      </Principal>
+      <Dependent Role="tblTicket_table">
+        <PropertyRef Name="TripID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTicket_t__BID__2D27B809">
+    <End Role="tblBookings" Type="Self.tblBookings" Multiplicity="1" />
+    <End Role="tblTicket_table" Type="Self.tblTicket_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBookings">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="tblTicket_table">
+        <PropertyRef Name="BID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTicket_t__BID__33D4B598">
+    <End Role="tblBookings" Type="Self.tblBookings" Multiplicity="1" />
+    <End Role="tblTicket_table" Type="Self.tblTicket_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBookings">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="tblTicket_table">
+        <PropertyRef Name="BID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTrips__Airpla__300424B4">
+    <End Role="tbl_AircraftDetails" Type="Self.tbl_AircraftDetails" Multiplicity="1" />
+    <End Role="tblTrips" Type="Self.tblTrips" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_AircraftDetails">
+        <PropertyRef Name="Airplane_no" />
+      </Principal>
+      <Dependent Role="tblTrips">
+        <PropertyRef Name="Airplane_No" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblTrips__Flight__2F10007B">
+    <End Role="tbl_FlightDetails" Type="Self.tbl_FlightDetails" Multiplicity="1" />
+    <End Role="tblTrips" Type="Self.tblTrips" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_FlightDetails">
+        <PropertyRef Name="FlightId" />
+      </Principal>
+      <Dependent Role="tblTrips">
+        <PropertyRef Name="FlightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_Bid">
+    <End Role="tblBookings" Type="Self.tblBookings" Multiplicity="0..1" />
+    <End Role="tblPayments" Type="Self.tblPayments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBookings">
+        <PropertyRef Name="BID" />
+      </Principal>
+      <Dependent Role="tblPayments">
+        <PropertyRef Name="Bid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="addTrip" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FlightID" Type="varchar" Mode="In" />
+    <Parameter Name="Airplane_No" Type="varchar" Mode="In" />
+    <Parameter Name="TripDate" Type="date" Mode="In" />
+    <Parameter Name="DepTime" Type="time" Mode="In" />
+    <Parameter Name="Arrival_Time" Type="time" Mode="In" />
+  </Function>
+  <Function Name="addTripsDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="allTrips" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="alterTrip" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TripID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Airplane_No" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeptTime" Type="time" Mode="In" />
+    <Parameter Name="ArrivalTime" Type="time" Mode="In" />
+  </Function>
+  <Function Name="createTrip" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TripID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Airplane_No" Type="nvarchar" Mode="In" />
+    <Parameter Name="DeptTime" Type="time" Mode="In" />
+    <Parameter Name="ArrivalTime" Type="time" Mode="In" />
+  </Function>
+  <Function Name="flightDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="locations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="passengerInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="passengers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="planeInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="planeID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="planes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="planeSeatInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tripId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="planeSeats" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Plane_no" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_AddFlight" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="td" Type="varchar" Mode="In" />
+    <Parameter Name="dp" Type="nvarchar" Mode="In" />
+    <Parameter Name="ap" Type="nvarchar" Mode="In" />
+    <Parameter Name="cabin" Type="char" Mode="In" />
+    <Parameter Name="ef" Type="nvarchar" Mode="In" />
+    <Parameter Name="bf" Type="nvarchar" Mode="In" />
+    <Parameter Name="ff" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_AdminLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_Booking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_DetailsConfirmation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mBID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_DetailsConfirmation1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mBID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_displaypassengers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_EditFlight" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fid" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_FlightSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="from" Type="nvarchar" Mode="In" />
+    <Parameter Name="to" Type="nvarchar" Mode="In" />
+    <Parameter Name="deptdate" Type="date" Mode="In" />
+    <Parameter Name="returndate" Type="date" Mode="In" />
+    <Parameter Name="PassengerCount" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_FlightSelect1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="from" Type="nvarchar" Mode="In" />
+    <Parameter Name="to" Type="nvarchar" Mode="In" />
+    <Parameter Name="deptdate" Type="date" Mode="In" />
+    <Parameter Name="returndate" Type="date" Mode="In" />
+    <Parameter Name="PassengerCount" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_FlightSelect2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="from" Type="nvarchar" Mode="In" />
+    <Parameter Name="to" Type="nvarchar" Mode="In" />
+    <Parameter Name="deptdate" Type="date" Mode="In" />
+    <Parameter Name="returndate" Type="date" Mode="In" />
+    <Parameter Name="PassengerCount" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_GetBookings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_getpayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_getTicket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_getUserByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="sec" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_getUserIDbyEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="proc_insertpassengers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TicketID" Type="varchar" Mode="In" />
+    <Parameter Name="Pname" Type="varchar" Mode="In" />
+    <Parameter Name="Gender" Type="varchar" Mode="In" />
+    <Parameter Name="SeatID" Type="varchar" Mode="In" />
+    <Parameter Name="Age" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_payment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="amount" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="bid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_ShowFlight" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_TicketBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BID" Type="varchar" Mode="In" />
+    <Parameter Name="TripID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_updateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="sec" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_updateUser1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="pass" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_updateUser2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="pass" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_UserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_UserDetails1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_UserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_UserRegisteration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="t" Type="varchar" Mode="In" />
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="l" Type="varchar" Mode="In" />
+    <Parameter Name="dob" Type="date" Mode="In" />
+    <Parameter Name="phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="pass" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="proc_UserRegisteration1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="t" Type="varchar" Mode="In" />
+    <Parameter Name="f" Type="varchar" Mode="In" />
+    <Parameter Name="l" Type="varchar" Mode="In" />
+    <Parameter Name="dob" Type="date" Mode="In" />
+    <Parameter Name="phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="pass" Type="nvarchar" Mode="In" />
+    <Parameter Name="sec" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SearchFlight" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="from" Type="nvarchar" Mode="In" />
+    <Parameter Name="to" Type="nvarchar" Mode="In" />
+    <Parameter Name="deptdate" Type="date" Mode="In" />
+    <Parameter Name="returndate" Type="date" Mode="In" />
+    <Parameter Name="Pass" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SearchFlight1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="from" Type="nvarchar" Mode="In" />
+    <Parameter Name="to" Type="nvarchar" Mode="In" />
+    <Parameter Name="deptdate" Type="date" Mode="In" />
+    <Parameter Name="returndate" Type="date" Mode="In" />
+    <Parameter Name="Pass" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SearchFlight2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="from" Type="nvarchar" Mode="In" />
+    <Parameter Name="to" Type="nvarchar" Mode="In" />
+    <Parameter Name="deptdate" Type="date" Mode="In" />
+    <Parameter Name="returndate" Type="date" Mode="In" />
+    <Parameter Name="Pass" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SeatPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TripID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_cancelSeat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_cancelTicket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_cancelTicket1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_cancelticketStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_downloadticket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_viewBooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="time" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flight" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="TripByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TripID" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="AirlineReservationModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_AircraftDetails" EntityType="Self.tbl_AircraftDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Airports" EntityType="Self.tbl_Airports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_FlightDetails" EntityType="Self.tbl_FlightDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBookings" EntityType="Self.tblBookings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblpassenger_table" EntityType="Self.tblpassenger_table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPayments" EntityType="Self.tblPayments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSeats" EntityType="Self.tblSeats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTicket_table" EntityType="Self.tblTicket_table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTrips" EntityType="Self.tblTrips" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tblBookin__UserI__31EC6D26" Association="Self.FK__tblBookin__UserI__31EC6D26">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblBookings" EntitySet="tblBookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblpassen__Ticke__2E1BDC42" Association="Self.FK__tblpassen__Ticke__2E1BDC42">
+      <End Role="tblTicket_table" EntitySet="tblTicket_table" />
+      <End Role="tblpassenger_table" EntitySet="tblpassenger_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblSeats__Airpla__30F848ED" Association="Self.FK__tblSeats__Airpla__30F848ED">
+      <End Role="tbl_AircraftDetails" EntitySet="tbl_AircraftDetails" />
+      <End Role="tblSeats" EntitySet="tblSeats" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTicket__TripI__32E0915F" Association="Self.FK__tblTicket__TripI__32E0915F">
+      <End Role="tblTrips" EntitySet="tblTrips" />
+      <End Role="tblTicket_table" EntitySet="tblTicket_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTicket_t__BID__2D27B809" Association="Self.FK__tblTicket_t__BID__2D27B809">
+      <End Role="tblBookings" EntitySet="tblBookings" />
+      <End Role="tblTicket_table" EntitySet="tblTicket_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTicket_t__BID__33D4B598" Association="Self.FK__tblTicket_t__BID__33D4B598">
+      <End Role="tblBookings" EntitySet="tblBookings" />
+      <End Role="tblTicket_table" EntitySet="tblTicket_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTrips__Airpla__300424B4" Association="Self.FK__tblTrips__Airpla__300424B4">
+      <End Role="tbl_AircraftDetails" EntitySet="tbl_AircraftDetails" />
+      <End Role="tblTrips" EntitySet="tblTrips" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblTrips__Flight__2F10007B" Association="Self.FK__tblTrips__Flight__2F10007B">
+      <End Role="tbl_FlightDetails" EntitySet="tbl_FlightDetails" />
+      <End Role="tblTrips" EntitySet="tblTrips" />
+    </AssociationSet>
+    <AssociationSet Name="pk_Bid" Association="Self.pk_Bid">
+      <End Role="tblBookings" EntitySet="tblBookings" />
+      <End Role="tblPayments" EntitySet="tblPayments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

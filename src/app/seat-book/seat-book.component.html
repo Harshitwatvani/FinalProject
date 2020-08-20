@@ -1,0 +1,23 @@
+<div class="maindiv" *ngIf="(info | json) !== '{}'">
+    <table>
+        <tr *ngFor="let row of rows">
+            <td *ngFor="let column of columns">
+                <button [class] = "seatObject[row + column].type" 
+                [ngClass]= "{'Y': seatObject[row + column].clicked, 'X' : seatObject[row + column].clicked}"
+                 (click)="handleSeatClick(seatObject[row + column], row + column)" 
+                  [disabled] = "seatObject[row + column].booked" >{{row + column}}
+                </button>
+            </td>
+        </tr>
+    </table>
+    <div class="click">  
+    <p *ngIf="totalFare > 0">
+        Total Fare :Rs. {{totalFare}}
+    </p>
+
+    SeatCount : {{count - seatCount}}
+  
+  
+        <button   [disabled] = "(count - seatCount) !== 0" (click) = "onContinue()">Continue</button>
+    </div>  
+</div>
